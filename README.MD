@@ -37,6 +37,7 @@ JWT_KEY='your secret key for cryptography' <- Esta variavel deve ser configurado
 ROTAS:
 
 - [x] Cadastros: Implementar rota de cadastro de usuário com um campo para e-mail e outro para senha;
+
 *POST - /register
 Parametros a serem passados no body:
 1. email
@@ -45,6 +46,7 @@ Parametros a serem passados no body:
 
 
 - [x] Login: O usuário dever ser salvo no banco de dados e como autenticação deve ser implementado o JWT (Json Web Token). 
+
 *POST - /login
 Parametros a serem passados no body:
 1. email
@@ -60,30 +62,36 @@ Parametros a serem passados no body:
 ○ Celulares e Telefones
 ○ Eletrônicos, Áudio e Vídeo
 ○ Games
+
 *GET - /categories
 
 Também foi implementada uma roda que exibe todas as categorias disponiveis pela API do Mercado Livre.
+
 *GET /categories/all
 
 
 - [x]  Produtos: Deve retornar uma lista dos produtos de determinada categoria, o identiﬁcador da categoria deve ser passado por parâmetro.
+
 *GET - /products/:category
 
 No parametro :category, informar o id da categoria a serem exibidos os produtos. O valor deve ser do tipo inteiro.
 
 
 - [x] Produto: Deve retornar um produto passando por parâmetro de identiﬁcação.
+
 *GET - /product/:id
 
 No parametro :id, informar o ID do produto a ser exibido. O valor deve ser do tipo inteiro.
 
 
 - [x] Preços: Deve retorna uma lista de produtos de uma única categoria ordenados pelo menor preço.
+
 *GET - /products/:category/:filter
 No parametro :filter, deve ser passado o valor "price" no formato string.
 
 
 - [x] Pedidos: Deve retornar uma lista de produtos com o nome do usuário
+
 *POST - /orders
 
 Parametro a ser passado no body:
@@ -92,6 +100,7 @@ Parametro a ser passado no body:
 No parametro client, deve ser informado o id do cliente a ser consultado.
 
 Para adicionar novos pedidos, foi implementada a rota abaixo:
+
 *POST - /neworder
 Parametros a serem passados no body:
 1. product

@@ -1,4 +1,4 @@
-import { Request, Response, Router } from 'express';
+import { Request, Response } from 'express';
 import JWT from 'jsonwebtoken';
 import { User } from '../services/user.service';
 
@@ -16,22 +16,18 @@ export const login = async(req:Request, res:Response)=>{
                     {expiresIn:'2h'}
                 );
     
-                res.json({
+                res.status(200).json({
                     token:token,
                     user:{id: user[0].id, name:user[0].name, email:user[0].email}
                 })
                 return
-    
-                // res.json({status:true, token: token, userLog: user[0].name});
-                // return
             }
         } catch(err){
-            res.json({acesso:false})
+            res.status(404).json({message:"Algo inesperado aconteceu. Tente novamente em alguns minutos."})
             return
         }
-        
     }
-    res.json({status:false})
+    res.status(200).json({message:"Acesso negado. Verifique se o usuário e a senha são validos, e tente novamente."})
 }
 
 export const register = async (req: Request, res: Response) => {
@@ -48,7 +44,7 @@ export const register = async (req: Request, res: Response) => {
         let newUser = await User.create(name,email,password)
         res.status(201).json({
             usuario: newUser.name,
-            status: "Criado com sucesso!"
+            message: "Criado com sucesso!"
         })
     }
 };
