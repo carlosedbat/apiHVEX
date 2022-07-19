@@ -7,21 +7,21 @@ export const Products = {
         return await prisma.product.findMany()
     },
 
-    findByCategory: async (categoryName: string) => {
+    findByCategory: async (categoryID: number) => {
         return await prisma.product.findMany({
             where:{
                 category:{
-                    name:categoryName
+                    id:categoryID
                 }
             }
         })
     },
 
-    findByCategory_LowPrice: async (categoryName: string) => {
+    findByCategory_LowPrice: async (categoryID: number) => {
         return await prisma.product.findMany({
             where:{
                 category:{
-                    name:categoryName
+                    id:categoryID
                 }
             },
             orderBy:[
