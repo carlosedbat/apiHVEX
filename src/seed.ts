@@ -3,23 +3,17 @@ const prisma = new PrismaClient()
 import dotenv from 'dotenv';
 import axios from 'axios';
 
+dotenv.config();
+
 const api = axios.create({
     baseURL: process.env.KEY_API as string
 });
 
-dotenv.config();
-
-const ClearBD = async (name: string, title: string) => {
+const ClearBD = async () => {
     await prisma.user.deleteMany();
     await prisma.category.deleteMany();
     await prisma.order.deleteMany();
     await prisma.product.deleteMany();
-
-    const category = await prisma.category.create({
-        data: {
-            name: name
-        }
-    });
 }
 
 const CreateNewCategory = async (name:string) => {
@@ -74,4 +68,5 @@ const GetDataFromAPI = async () => {
     }
 }
 
+ClearBD();
 GetDataFromAPI();
