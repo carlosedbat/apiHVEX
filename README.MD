@@ -11,7 +11,7 @@ PORT=80 <- Esta variavel deve ser configurada com a porta a ser executada no for
 
 DATABASE_URL="mysql://user:password@host:port/database" <- Esta variavel deve ser configurado com as informacoes de acesso do banco de dados
 
-KEY_API = "https://api.mercadolibre.com/sites/MLB/#json" <- Esta variavel deve ser configurado com a api base para obtencao de dados
+KEY_API = "https://api.mercadolibre.com/sites/MLB" <- Esta variavel deve ser configurado com a api base para obtencao de dados
 
 JWT_KEY='your secret key for cryptography' <- Esta variavel deve ser configurado a chave de criptografia do JTW
 
