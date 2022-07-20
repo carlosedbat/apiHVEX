@@ -31,7 +31,7 @@ export const Auth = {
         if (sucess) {
             next();
         } else {
-            res.status(401); //Not autorized
+            res.status(401); //Not authenticated
             res.json({ error: 'Não authenticado.' });
         }
     }

@@ -7,6 +7,8 @@ import {Auth} from '../middlewares/Auth';
 
 const router = Router();
 
+//All routes with Auth.private midleware, need the JWT token to be executed
+
 router.post('/register',User.register)
 
 router.post('/login',User.login)
