@@ -6,24 +6,30 @@ export const getProducts = async (req:Request,res:Response)=>{
     res.json(products)
 };
 
-export const productByCategory = async (req:Request,res:Response)=>{
-    let categoryParam:number = parseInt(req.params.category as string)
+export const productByCategory = async (req:Request,res:Response)=>{    
+    let categoryParam:number = parseInt((req.params.category as string).replace(/[^0-9]/g,''))
     let filterParam = req.params.filter as string
-
-    console.log(filterParam)
-    if(filterParam!=undefined){
-        if(filterParam=="price"){
-            let category = await Products.findByCategory_LowPrice(categoryParam)
-            res.json(category)
+    
+    try {
+        if(filterParam!=undefined){
+            if(filterParam=="price"){
+                let category = await Products.findByCategory_LowPrice(categoryParam)
+                res.json(category)
+            } else {
+                res.json({
+                    error:"Bad request."
+                })
+            }
         } else {
-            res.json({
-                error:"Bad request."
-            })
+            let category = await Products.findByCategory(categoryParam)
+            res.json(category)
+            return
         }
-        
-    } else {
-        let category = await Products.findByCategory(categoryParam)
-        res.json(category)
+    } catch (error) {
+        res.send(400).json({
+            error:"Bad request."
+        })
+        return
     }
       
 };

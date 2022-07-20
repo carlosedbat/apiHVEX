@@ -16,14 +16,6 @@ const api = axios.create({
     baseURL: process.env.KEY_API as string
 });
 
-const ClearBD = async () => {
-    //this function is responsible for clear any data in database
-    await prisma.user.deleteMany();
-    await prisma.category.deleteMany();
-    await prisma.order.deleteMany();
-    await prisma.product.deleteMany();
-};
-
 const CreateNewCategory = async (name:string) => {
     //this function is responsible for register each category in database
     const category = await prisma.category.create({
@@ -73,5 +65,4 @@ const GetDataFromAPI = async () => {
     }
 };
 
-ClearBD();
 GetDataFromAPI();
